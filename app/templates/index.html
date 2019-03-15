@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Dog Breed Classifier</title>
+
+    <style>
+        .input-group-text {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Dog Breed Classifier</h1>
+                <p>Thanks for using this Dog Breed Classifier, which could classify over 100 dog breed by uploading a dog image.</p>
+                <p>To start with, please upload a dog image.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-xs-12">
+                <form action="/predict" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <div class="btn btn-primary float-left">
+                            <input type="file" name="file">
+                        </div>
+                        <div class="input-group-prepend">
+                            <button type="submit" class="input-group-text">Predict</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% block message %}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-lg-6 col-xs-12">
+                {% if img_path %}
+                <img src={{img_path}} />
+                {% endif %}
+                <p>{{breed}}</p>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+
+</body>
+</html>
